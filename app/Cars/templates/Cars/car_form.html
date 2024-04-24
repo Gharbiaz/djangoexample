@@ -1,0 +1,42 @@
+{% extends 'Cars/car_list.html'%}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Titre</title>
+</head>
+<body>
+{% block content%}
+<h1> Formulaire </h1>
+
+<form method="POST">{% csrf_token %}
+    <table>
+        <tr>
+            <td>Type</td>
+            <td>:</td>
+            <td>{{ form.name}}</td>
+        </tr>
+        <tr>
+            <td>Matricule</td>
+            <td>:</td>
+            <td>{{ form.identityNumber}}</td>
+        </tr>
+        <tr>
+            <td>Societe</td>
+            <td>:</td>
+            <td>{{ form.department}}</td>
+        </tr>
+        <tr>
+            <td>Tel du proprietaire</td>
+            <td>:</td>
+            <td>{{ form.address}}</td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Save"></td>
+        </tr>
+    </table>
+</form>
+{% endblock%}
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car_CRUD</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body style="background-color: #D2C0A7);">
+    <nav  style="box-shadow:2px 2px 2px #D2C0A7;"class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="">ABOUT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            
+              <li><a class="nav-link scrollto " href="{% url 'signup' %}">signup</a></li>
+              <li><a class="nav-link scrollto" href="{% url 'login' %}">login</a></li>
+           
+
+          </ul>
+          
+        </div>
+      </nav>
+
+<div style="box-shadow:3px 3px 3px #ffffff ;" class="container d-flex align-items-center flex-column bg-secondary text-dark" style="padding-top: 70px;">
+               
+           
+    {% block content%}
+
+
+
+        <a href="{% url 'car_new' %}" style="margin-bottom: 60px;margin-top: 40px;"><input style="box-shadow:2px 2px 2px #D2C0A7;" type="button" class="btn btn-primary" value="INSERT A NEW CAR"></a> 
+
+
+    <br><br>
+    <table class="table table-sm table-dark">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Type</th>
+          <th scope="col">Matricule</th>
+          <th scope="col">Contact du proprietaire</th>
+          <th scope="col">Current Date</th>
+          <th scope="col">Current Time</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for Car in object_list %}
+        <tr>
+          <td>{{ car.id }}</td>
+          <td>{{ car.name }}</td>
+          <td>{{ car.identityNumber }}</td>
+          <td>{{ car.address }}</td>
+          <td>{{ car.currentdate }}</td>
+          <td>{{ car.time }}</td>
+          <td>
+           
+          </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3"><b>Data is empty! Please, add data first.</b></td></tr>
+        {% endfor %}
+ 
+      </tbody>
+    </table>
+     <table border="2.5" style="margin-bottom: 60px; border-color: #ffffff; border-radius: 3px; text-align: center;">
+        <tr ">
+            <th style="padding: 8px;">Type</th>
+            <th style="padding: 8px;">Identity Matricule</th>
+            <th style="padding: 8px;">Owner's Contact</th>
+            <th style="padding: 8px;">Action</th>
+        </tr> -->
+        {% for car in object_list %}
+        <tr>
+            <td>{{ car.name }}</td>
+            <td>{{ car.identityNumber }}</td>
+             <td>{{ car.address }}</td>
+            <td style="padding: 8px;">
+                <a href="{% url 'car_detail' car.id %}" >Detail</a>
+                <a href="{% url 'car_edit' car.id %}">Edit</a>
+                <a href="{% url 'car_delete' car.id %}">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr><td colspan="3"><b>Data is empty! Please, add data first.</b></td></tr>
+        {% endfor %} -->
+     </table>
+    {% endblock%}
+</div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

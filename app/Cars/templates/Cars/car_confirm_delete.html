@@ -1,0 +1,17 @@
+{% extends 'Cars/car_list.html'%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Titre</title>
+</head>
+<body>
+{% block content%}
+<h1>Supprimer une voiture</h1>
+<form method="post">{% csrf_token %}
+    vous ete sure? "{{ object }}" ?
+    <input type="submit" value="Submit" />
+</form>
+{% endblock%}
+</body>
+</html>
